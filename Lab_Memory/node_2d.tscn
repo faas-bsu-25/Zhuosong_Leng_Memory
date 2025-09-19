@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtnmways5ydgm"]
+
+[ext_resource type="Script" uid="uid://cdfh552xqjhjs" path="res://Lab_Memory/node_2d.gd" id="1_on8nt"]
+[ext_resource type="Texture2D" uid="uid://cypjhg05pvc5l" path="res://assets/card_back.png" id="1_trntn"]
+[ext_resource type="Script" uid="uid://cd2bl442vnb3g" path="res://Lab_Memory/card.gd" id="2_ne8qa"]
+[ext_resource type="Texture2D" uid="uid://moguxg6w3cuq" path="res://assets/card_clubs_02.png" id="3_4y1h1"]
+[ext_resource type="Texture2D" uid="uid://ckbtaunyfpsqc" path="res://assets/card_clubs_04.png" id="5_omgs3"]
+[ext_resource type="Texture2D" uid="uid://d2jxaibvfr6ol" path="res://assets/card_diamonds_02.png" id="6_v1afu"]
+[ext_resource type="Texture2D" uid="uid://b5yaeex0061te" path="res://assets/card_hearts_02.png" id="7_2xu1s"]
+[ext_resource type="Texture2D" uid="uid://pwmfmstu1fw" path="res://assets/card_spades_06.png" id="8_3vyd0"]
+[ext_resource type="Texture2D" uid="uid://gecwsrpb7klu" path="res://assets/color_purple_empty.png" id="9_rmd55"]
+[ext_resource type="AudioStream" uid="uid://c6uutqxnu5mdt" path="res://assets/laserShoot.wav" id="10_omgs3"]
+[ext_resource type="AudioStream" uid="uid://c4sgp7sq4agdj" path="res://assets/jump.wav" id="11_v1afu"]
+
+[node name="Memory" type="Node2D"]
+script = ExtResource("1_on8nt")
+
+[node name="game_main_UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 651.0
+
+[node name="GridContainer" type="GridContainer" parent="game_main_UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(8.23796, 6.21285)
+columns = 4
+
+[node name="Card" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("3_4y1h1")
+card_value = "clubs_02"
+
+[node name="Card7" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("9_rmd55")
+card_value = "purple_empty"
+
+[node name="Card8" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("8_3vyd0")
+card_value = "spades_06"
+
+[node name="Card9" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("7_2xu1s")
+card_value = "hearts_02"
+
+[node name="Card10" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("6_v1afu")
+card_value = "diamonds_02"
+
+[node name="Card11" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("5_omgs3")
+card_value = "clubs_04"
+
+[node name="Card12" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("3_4y1h1")
+card_value = "clubs_02"
+
+[node name="Card13" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("9_rmd55")
+card_value = "purple_empty"
+
+[node name="Card14" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("8_3vyd0")
+card_value = "spades_06"
+
+[node name="Card15" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("7_2xu1s")
+card_value = "hearts_02"
+
+[node name="Card16" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("6_v1afu")
+card_value = "diamonds_02"
+
+[node name="Card17" type="TextureRect" parent="game_main_UI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_trntn")
+script = ExtResource("2_ne8qa")
+card_front = ExtResource("5_omgs3")
+card_value = "clubs_04"
+
+[node name="flip_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_omgs3")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_v1afu")
+
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card" to="game_main_UI/GridContainer/Card" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card7" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card7" to="game_main_UI/GridContainer/Card7" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card8" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card8" to="game_main_UI/GridContainer/Card8" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card9" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card9" to="game_main_UI/GridContainer/Card9" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card10" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card10" to="game_main_UI/GridContainer/Card10" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card11" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card11" to="game_main_UI/GridContainer/Card11" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card12" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card12" to="game_main_UI/GridContainer/Card12" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card13" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card13" to="game_main_UI/GridContainer/Card13" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card14" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card14" to="game_main_UI/GridContainer/Card14" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card15" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card15" to="game_main_UI/GridContainer/Card15" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card16" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card16" to="game_main_UI/GridContainer/Card16" method="_on_gui_input"]
+[connection signal="card_selected" from="game_main_UI/GridContainer/Card17" to="." method="_on_card_card_selected"]
+[connection signal="gui_input" from="game_main_UI/GridContainer/Card17" to="game_main_UI/GridContainer/Card17" method="_on_gui_input"]
+[connection signal="timeout" from="flip_timer" to="." method="_on_flip_timer_timeout"]
